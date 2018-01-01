@@ -78,7 +78,7 @@ if not os.path.isdir(screenshot_backup_dir):
 def pull_screenshot():
     process = subprocess.Popen('adb shell screencap -p', shell=True, stdout=subprocess.PIPE)
     screenshot = process.stdout.read()
-    if sys.platform == 'win32':
+    if sys.platform == 'win32' or sys.platform == 'darwin':
         screenshot = screenshot.replace(b'\r\n', b'\n')
     f = open('autojump.png', 'wb')
     f.write(screenshot)
